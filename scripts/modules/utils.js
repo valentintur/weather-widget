@@ -20,3 +20,12 @@ export const getCurrentDateTime = () => {
 
     return {dateFormat, timeFormat, weekdayFormat}    
 }
+
+export const getWindDirection = (dir) => {
+    let directionIcon = document.createElement('span');
+    directionIcon.innerHTML = '&#8593;'
+    directionIcon.style.display = 'block';
+    directionIcon.style.transform = `rotate(${dir}deg)`
+
+    return directionIcon.outerHTML
+}
