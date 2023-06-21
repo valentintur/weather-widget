@@ -3,7 +3,7 @@ export const getCurrentDateTime = () => {
     const date = new Date(); 
 
     const dateFormat = new Intl.DateTimeFormat('en-GB', {
-        day: '2-digit',
+        day: '2-digit', 
         month: 'long',
         year: 'numeric',
     }).format(date)
