@@ -9,9 +9,9 @@ export const renderWidgetToday = (widget) => {
         'beforeEnd', 
         `<div class="widget__today">
             <div class="widget__date-block">
-                <p class="widget__date">${currentTime.dayOfMonth} ${currentTime.month} ${currentTime.year}</p> 
-                <p class="widget__time">${currentTime.hours}:${currentTime.minutes}</p>
-                <p class="widget__day">${currentTime.dayOfWeek}</p> 
+                <p class="widget__date">${currentTime.dateFormat}</p>   
+                <p class="widget__time">${currentTime.timeFormat}</p> 
+                <p class="widget__day">${currentTime.weekdayFormat}</p> 
             </div>
             <div class="widget__icon">
                 <img class="widget__img" src="./icon/01d.svg" alt="Weather">
