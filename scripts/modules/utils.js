@@ -22,10 +22,6 @@ export const getCurrentDateTime = () => {
 }
 
 export const getWindDirection = (dir) => {
-    let directionIcon = document.createElement('span');
-    directionIcon.innerHTML = '&#8593;'
-    directionIcon.style.display = 'block';
-    directionIcon.style.transform = `rotate(${dir}deg)`
-
-    return directionIcon.outerHTML
+    const directionIcon = `<span style="display: block; transform: rotate(${dir}deg)">&#8593;</span>`; 
+    return directionIcon; 
 }

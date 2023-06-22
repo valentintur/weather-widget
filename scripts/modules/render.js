@@ -16,7 +16,7 @@ export const renderWidgetToday = (widget, data) => {
         name,
         main: {
             temp,
-            feels_like
+            feels_like: feelsLike
         }
     } = data;
 
@@ -36,9 +36,9 @@ export const renderWidgetToday = (widget, data) => {
                     <p>${name}</p>  
                     <button class="widget__change-city" aria-label="Change city"></button>
                 </div>
-                <p class="widget__temp-big">${temp} °C</p> 
-                <p class="widget__felt">feels-like</p> 
-                <p class="widget__temp-small">${feels_like} °C</p>
+                <p class="widget__temp-big">${temp.toFixed(1)} °C</p>  
+                <p class="widget__felt">feels like</p> 
+                <p class="widget__temp-small">${feelsLike.toFixed(1)} °C</p> 
             </div>
         </div>`
     )
@@ -62,7 +62,7 @@ export const renderWidgetOther = (widget, data) => {
             </div>
             <div class="widget__humidity">
                 <p class="widget__humidity-title">Humidity</p> 
-                <p class="widget__humidity-value">${main.humidity}</p>
+                <p class="widget__humidity-value">${main.humidity}%</p> 
                 <p class="widget__humidity-text">Т.Р: -0.2 °C</p>
             </div>
             <div class="widget__pressure">
