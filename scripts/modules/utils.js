@@ -25,3 +25,13 @@ export const getWindDirection = (dir) => {
     const directionIcon = `<span style="display: block; transform: rotate(${dir}deg)">&#8593;</span>`; 
     return directionIcon; 
 }
+
+export const calculateDewPoint = (temp, humidity) => {
+    const A = 17.27;
+    const B = 237.7;
+
+    const ft = (A * temp) / (B + temp) + Math.log(humidity / 100);
+    const dewPoint = (B * ft) / (A - ft);
+
+    return dewPoint.toFixed(1);  
+}
