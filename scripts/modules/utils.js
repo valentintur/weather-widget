@@ -35,3 +35,47 @@ export const calculateDewPoint = (temp, humidity) => {
 
     return dewPoint.toFixed(1);  
 }
+
+export const getWeatherForecastData = (data) => { 
+    const forecasts = data.list.filter((item) => 
+        new Date(item.dt_txt).getHours() === 12 &&
+        new Date(item.dt_txt).getDate() >= new Date().getDate()
+    );
+
+    const forecastData = forecasts.map((item) => {
+        const date = new Date(item.dt_txt); 
+
+        const weekdaysShort = [
+            'sun', 'mon', 'thu', 'wed', 'thu', 'fri', 'sat'
+        ];
+
+        const dayOfWeek = weekdaysShort[date.getDay()]; 
+        const weatherIcon = item.weather[0].icon;
+
+        let minTemp = Infinity; 
+        let maxTemp = -Infinity;
+
+        for (let i = 0; i < data.list.length; i++) { 
+            const temp = data.list[i].main.temp;
+            const tempDate = new Date(data.list[i].dt_txt);
+
+            if (tempDate.getDate() === date.getDate()) {
+                if (temp < minTemp) {
+                    minTemp = temp;
+                }
+                if (temp > maxTemp) {
+                    maxTemp = temp;
+                }
+            } 
+        }
+
+        return {
+            dayOfWeek,
+            weatherIcon,
+            minTemp,
+            maxTemp
+        };
+    });
+
+    return forecastData;
+};
