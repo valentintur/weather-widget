@@ -1,6 +1,6 @@
 const API_URL = 'https://api.openweathermap.org/data/2.5/';
 const API_KEY = 'b3b393fc4d651403fbd3e6b5c29735d2';  
-  
+
 export const fetchWeather = async (city) => {
     try {
         const response = await fetch(`${API_URL}weather?units=metric&q=${city}&appid=${API_KEY}`);
@@ -24,5 +24,25 @@ export const fetchForecast = async (city) => {
         return { success: true, data } 
     } catch (error) { 
         return { success: false, error }  
+    }
+}
+
+export const getCity = async () => {
+    const url = 'https://ipapi.co/city/'; 
+
+    try {
+        const response = await fetch(url);  
+
+        if (!response.ok) {
+            throw new Error('Error city API'); 
+        }
+
+        const city = await response.text();  
+      
+        return { success: true, city }   
+
+    } catch (error) {
+        console.error(error)
+        return { success: false, error } 
     }
 }
